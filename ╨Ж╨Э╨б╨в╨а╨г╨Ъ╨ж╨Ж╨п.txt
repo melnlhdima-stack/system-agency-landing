@@ -1,0 +1,17 @@
+SYSTEM AGENCY — ЛЕНДІНГ І ЗАЯВКИ В TELEGRAM
+
+У комплекті:
+index.html — дизайн і форма заявки.
+functions/api/lead.js — серверна функція для Telegram (Cloudflare Pages).
+
+ВАЖЛИВО: токен бота, який був опублікований у чаті, потрібно відкликати через @BotFather. Використовуйте лише НОВИЙ токен. Не вставляйте його у HTML або публічний репозиторій.
+
+ПУБЛІКАЦІЯ
+1. Створіть GitHub-репозиторій і завантажте в нього index.html та папку functions.
+2. Cloudflare -> Workers & Pages -> Create -> Pages -> Connect to Git, виберіть репозиторій.
+3. Для статичного сайту без збірки залиште build command порожнім; якщо потрібен build output directory, розмістіть index.html у папці public і вкажіть public. Папка functions має бути у корені репозиторію.
+4. У Cloudflare Pages -> Settings -> Variables and Secrets додайте BOT_TOKEN (новий токен) та CHAT_ID (ваш числовий Telegram chat ID). Зберігайте BOT_TOKEN як Secret.
+5. Для отримання CHAT_ID: відкрийте @SystemAgencyLeadsBot і натисніть Start; у власному браузері відкрийте https://api.telegram.org/bot<ВАШ_НОВИЙ_ТОКЕН>/getUpdates, знайдіть message.chat.id. Не діліться цією URL-адресою або токеном.
+6. Повторно опублікуйте сайт після налаштування змінних. Відправте тестову заявку — повідомлення має прийти в Telegram.
+
+Без Cloudflare Pages Function форма при простому відкритті index.html не надсилатиме повідомлення. Для публічного сайту бажано додати Cloudflare Turnstile, обмеження частоти запитів і сторінку політики конфіденційності.
